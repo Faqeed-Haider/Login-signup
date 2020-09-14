@@ -1,0 +1,64 @@
+<div class="container">
+    <h2>Sign Up</h2>
+
+    <form novalidate #form = "ngForm" (ngSubmit)="onSubmit(form)">
+        <!--Username-->
+        <div class="form-group">
+            <label for = "username">Username</label>
+            <input id = "username" name = "username" class = "form-control" placeholder = "username" 
+                    [(ngModel)] = "users.username"
+                    #userNameVar = 'ngModel'
+                    [ngClass]="{'is-invalid': form.submitted && userNameVar.invalid}" required/>
+                    <div *ngIf="form.submitted && userNameVar.invalid" class="invalid-feedback">
+                        <div class="text-danger" *ngIf="userNameVar.errors.required">Username is required</div>
+                    </div>
+        </div>
+
+        <!--First Name-->
+        <div class="form-group">
+            <label for = "firstName">First Name</label>
+            <input id = "firstName" name = "firstName" class = "form-control" placeholder = "firstName" 
+                    [(ngModel)] = "users.firstName"
+                    #firstNameVar = 'ngModel'
+                    [ngClass]="{'is-invalid': form.submitted && firstNameVar.invalid}" required/>
+                    <div *ngIf="form.submitted && firstNameVar.invalid" class="invalid-feedback">
+                        <div class="text-danger"*ngIf="firstNameVar.errors.required">First Name is required</div>
+                    </div>
+        </div>
+
+        <!--Last Name--> 
+        <div class="form-group">
+            <label for = "lastName">Last Name</label>
+            <input id = "lastName" name = "lastName" class = "form-control" placeholder = "lastName"
+                    [(ngModel)] = "users.lastName"
+                    #lastNameVar = 'ngModel'
+                    [ngClass]="{'is-invalid': form.submitted && lastNameVar.invalid}" required/>
+                    <div *ngIf="form.submitted && lastNameVar.invalid" class="invalid-feedback">
+                        <div class="text-danger" *ngIf="lastNameVar.errors.required">Last Name is required</div>
+                    </div>
+        </div>
+
+        <!--Email-->
+        <!-- <div class="form-group">
+            <label for = "email">Email</label>
+            <input id = "email" name = "email" class = "form-control" placeholder = "email" required email
+                    [(ngModel)] = "users.email"/>
+        </div> -->
+
+        <!--Password-->
+        <div class="form-group">
+            <label for = "password">Password</label>
+            <input id = "password" name = "password" class = "form-control" type="password"
+                    placeholder = "password"  [(ngModel)] = "users.password"
+                    #passwordVar='ngModel'
+                    [ngClass]="{'is-invalid':form.submitted && passwordVar.invalid}" required/>
+                    <div *ngIf="form.submitted && passwordVar.invalid" class="invalid-feedback">
+                        <div class="text-danger" *ngIf="passwordVar.errors.required">Password is required</div>
+                    </div>
+        </div>     
+
+        
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+</div>
+
